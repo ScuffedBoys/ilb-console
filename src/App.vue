@@ -3,10 +3,10 @@
     <div class="dp-header dp-header-root">
       <div class="dp-header-brand">
         <img
-          src="/img/logos/duco-cloud-alt.png"
+          src="https://cdn.galactiq.net/ilb/bolt-lightning-solid.png"
           class="dp-header-brand-logo"
         />
-        <div class="dp-header-brand-text">Duco Cloud</div>
+        <div class="dp-header-brand-text">Intentionally Left Blank</div>
       </div>
       <div class="dp-header-nav-root">
         <div class="dp-header-nav">
@@ -21,20 +21,6 @@
             class="dp-header-nav-link"
             :active="isActiveLink('/servers')"
             >Servers</router-link
-          >
-          <router-link
-            to="/vps"
-            class="dp-header-nav-link"
-            style="display: none"
-            :active="isActiveLink('/vps')"
-            >VPS</router-link
-          >
-          <router-link
-            to="/websites"
-            class="dp-header-nav-link"
-            style="display: none"
-            :active="isActiveLink('/websites')"
-            >Websites</router-link
           >
           <router-link
             to="/order"
@@ -246,7 +232,7 @@ export default {
     }
 
     vm.api = axios.create({
-      baseURL: `https://console.ducocloud.com/api`,
+      baseURL: `https://console.pengucc.com/api`,
       timeout: 60000,
       headers: {
         Authorization: `Bearer ${
@@ -423,7 +409,7 @@ export default {
     logout() {
       window.localStorage.removeItem("access_token");
       this.api = axios.create({
-        baseURL: `https://console.ducocloud.com/api`,
+        baseURL: `https://console.pengucc.com/api`,
         timeout: 6000,
         headers: {
           Authorization: `Bearer ${
@@ -880,9 +866,9 @@ body {
 }
 
 :root {
-  --color-primary: #5e60ce;
-  --color-primary--link: #4895EF;
-  --color-primary--hover: #3F37C9;
+  --color-primary: #00B079;
+  --color-primary--link: #00B079;
+  --color-primary--hover: #00B079;
   --color-text: #ededed;
   --color-text--disabled: #8a8a8a;
   --color-back-link--hover: #a8a8a8;

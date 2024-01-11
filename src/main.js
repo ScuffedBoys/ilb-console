@@ -8,8 +8,8 @@ const app = createApp(App)
   .use(router)
   .use(
     new VueSocketIO({
-      debug: true,
-      connection: "https://console.ducocloud.com/",
+      debug: false,
+      connection: "https://console.pengucc.com/",
       options: { path: "/api/socket.io/" },
     })
   );

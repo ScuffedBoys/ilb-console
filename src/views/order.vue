@@ -23,48 +23,6 @@
             </div>
           </div>
         </div>
-
-        <tooltip
-          style="width: 100% !important"
-          text="Currently unavailable."
-        >
-        <div
-          class="dp-order-step1-item-root"
-          :selected="chosenAppType == 'qemu'"
-          disabled="true"
-        >
-          <div class="dp-order-step1-item">
-            <div class="dp-order-step1-item-logo">
-              <img src="/img/logos/qemu.svg" style="width: 100px" />
-            </div>
-            <div class="dp-order-step1-item-text">
-              <div class="dp-order-step1-item-text-title">VPS</div>
-              High performance <br />virtual private servers.
-            </div>
-          </div>
-        </div>
-      </tooltip>
-
-        <tooltip
-          style="width: 100% !important"
-          text="Currently unavailable. This feature will be<br> enabled somewhere in the near future."
-        >
-          <div
-            class="dp-order-step1-item-root"
-            :selected="chosenAppType == 'web'"
-            disabled="true"
-          >
-            <div class="dp-order-step1-item">
-              <div class="dp-order-step1-item-logo">
-                <img src="/img/logos/cyberpanel.svg" style="width: 100px" />
-              </div>
-              <div class="dp-order-step1-item-text">
-                <div class="dp-order-step1-item-text-title">Website</div>
-                Simple, Fast and Secure <br />website hosting.
-              </div>
-            </div>
-          </div>
-        </tooltip>
       </div>
     </div>
 
@@ -78,7 +36,7 @@
       <div class="dp-order-step-content dp-order-step2-grid">
         <div
           class="dp-order-step1-item-root"
-          v-if="chosenAppType != 'qemu' && chosenAppType != 'web'"
+          v-if="chosenAppType != 'qemu'"
           :selected="chosenLocation == 'us1'"
           @click="setChosenLocation('us1')"
         >
@@ -88,6 +46,23 @@
             </div>
             <div class="dp-order-step2-item-text">
               <div class="dp-order-step2-item-text-title">Oklahoma</div>
+              United States <br />
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="dp-order-step1-item-root"
+          v-if="chosenAppType != 'qemu'"
+          :selected="chosenLocation == 'us2'"
+          @click="setChosenLocation('us2')"
+        >
+          <div class="dp-order-step2-item">
+            <div class="dp-order-step1-item-logo">
+              <img src="/img/flags-svg/us.svg" style="width: 50px" />
+            </div>
+            <div class="dp-order-step2-item-text">
+              <div class="dp-order-step2-item-text-title">Virginia</div>
               United States <br />
             </div>
           </div>
@@ -193,15 +168,15 @@
             class="dp-order-step3-grid-row-item price-discounted"
             v-if="pkg.priceDiscounted"
           >
-            <div class="dp-order-price-discount-original">ᕲ{{ pkg.price }}</div>
+            <div class="dp-order-price-discount-original">${{ pkg.price }}</div>
             <div class="dp-order-price-discount-discounted">
-              ᕲ{{ pkg.priceDiscounted }}
+              ${{ pkg.priceDiscounted }}
             </div>
             <small class="dp-vps-price-month">/month</small>
           </div>
 
           <div class="dp-order-step3-grid-row-item" v-else>
-            ᕲ{{ pkg.price }}<small class="dp-vps-price-month">/month</small>
+            ${{ pkg.price }}<small class="dp-vps-price-month">/month</small>
           </div>
         </div>
       </div>
@@ -288,16 +263,16 @@
               v-if="pkg.priceDiscounted"
             >
               <div class="dp-order-price-discount-original">
-                ᕲ{{ pkg.price }}
+                ${{ pkg.price }}
               </div>
               <div class="dp-order-price-discount-discounted">
-                ᕲ{{ pkg.priceDiscounted }}
+                ${{ pkg.priceDiscounted }}
               </div>
               <small class="hide-on-small-screen">/month</small>
             </div>
 
             <div class="dp-order-step3-grid-row-item" v-else>
-              ᕲ{{ pkg.price }}<small class="hide-on-small-screen">/month</small>
+              ${{ pkg.price }}<small class="hide-on-small-screen">/month</small>
             </div>
           </div>
         </div>
@@ -306,7 +281,7 @@
 
     <div
       class="dp-order-step order-step2"
-      v-if="chosenPackageId && chosenPackageId.startsWith('MAGI')"
+      v-if="chosenPackageId && chosenPackageId.startsWith('MCJ')"
     >
       <div class="dp-order-step-title">
         <div class="dp-order-step-number-root">
@@ -317,16 +292,151 @@
       <div class="dp-order-step-content dp-order-step2-grid">
         <div
           class="dp-order-step1-item-root"
-          :selected="chosenRuntime == 'default'"
-          @click="setChosenRuntime('default')"
+          :selected="chosenRuntime == 'purpur'"
+          @click="setChosenRuntime('purpur')"
         >
           <div class="dp-order-step2-item">
             <div class="dp-order-step1-item-logo">
-              <img src="/img/logos/magi.png" height="37.5px" />
+              <img src="/img/logos/purpur-squid.svg" height="37.5px" />
             </div>
             <div class="dp-order-step2-item-text">
-              <div class="dp-order-step2-item-text-title">Magi</div>
-              A Magi Miner <br />
+              <div class="dp-order-step2-item-text-title">Purpur</div>
+              Your Minecraft, your way <br />
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="dp-order-step1-item-root"
+          :selected="chosenRuntime == 'paper'"
+          @click="setChosenRuntime('paper')"
+        >
+          <div class="dp-order-step2-item">
+            <div class="dp-order-step1-item-logo">
+              <img src="/img/logos/paper.gif" height="37.5px" />
+            </div>
+            <div class="dp-order-step2-item-text">
+              <div class="dp-order-step2-item-text-title">Paper</div>
+              Next generation of Minecraft <br />
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="dp-order-step1-item-root"
+          :selected="chosenRuntime == 'pufferfish'"
+          @click="setChosenRuntime('pufferfish')"
+          v-if="chosenPackageId != 'MCBUD1' && chosenPackageId != 'MCEX1'"
+        >
+          <div class="dp-order-step2-item">
+            <div class="dp-order-step1-item-logo">
+              <img src="/img/logos/pufferfish.gif" height="37.5px" />
+            </div>
+            <div class="dp-order-step2-item-text">
+              <div class="dp-order-step2-item-text-title">Pufferfish</div>
+              A highly optimized Paper fork <br />
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="dp-order-step1-item-root"
+          :selected="chosenRuntime == 'Bungeecord'"
+          @click="setChosenRuntime('Bungeecord')"
+          v-if="chosenPackageId != 'MCBUD1' && chosenPackageId != 'MCEX1'"
+        >
+          <div class="dp-order-step2-item">
+            <div class="dp-order-step1-item-logo">
+              <img src="/img/logos/bungee.png" height="37.5px" />
+            </div>
+            <div class="dp-order-step2-item-text">
+              <div class="dp-order-step2-item-text-title">Bungeecord</div>
+              Minecraft server Proxy <br />
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="dp-order-step1-item-root"
+          :selected="chosenRuntime == 'forge'"
+          @click="setChosenRuntime('forge')"
+          v-if="chosenPackageId != 'MCBUD1' && chosenPackageId != 'MCEX1'"
+        >
+          <div class="dp-order-step2-item">
+            <div class="dp-order-step1-item-logo">
+              <img src="/img/logos/forge.png" height="37.5px" />
+            </div>
+            <div class="dp-order-step2-item-text">
+              <div class="dp-order-step2-item-text-title">Forge</div>
+              Minecraft modding API <br />
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="dp-order-step1-item-root"
+          :selected="chosenRuntime == 'Arclight'"
+          @click="setChosenRuntime('Arclight')"
+          v-if="chosenPackageId != 'MCBUD1' && chosenPackageId != 'MCEX1'"
+        >
+          <div class="dp-order-step2-item">
+            <div class="dp-order-step1-item-logo">
+              <img src="/img/logos/arclight.png" height="37.5px" />
+            </div>
+            <div class="dp-order-step2-item-text">
+              <div class="dp-order-step2-item-text-title">Arclight</div>
+              Bukkit and Forge in one <br />
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="dp-order-step1-item-root"
+          :selected="chosenRuntime == 'Fabric'"
+          @click="setChosenRuntime('Fabric')"
+          v-if="chosenPackageId != 'MCBUD1' && chosenPackageId != 'MCEX1'"
+        >
+          <div class="dp-order-step2-item">
+            <div class="dp-order-step1-item-logo">
+              <img src="/img/logos/fabric.png" height="37.5px" />
+            </div>
+            <div class="dp-order-step2-item-text">
+              <div class="dp-order-step2-item-text-title">Fabric</div>
+              Lightweight, experimental modding toolchain <br />
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="dp-order-step1-item-root"
+          :selected="chosenRuntime == 'java'"
+          @click="setChosenRuntime('java')"
+          v-if="chosenPackageId != 'MCBUD1' && chosenPackageId != 'MCEX1'"
+        >
+          <div class="dp-order-step2-item">
+            <div class="dp-order-step1-item-logo">
+              <img src="/img/logos/grass.png" height="37.5px" />
+            </div>
+            <div class="dp-order-step2-item-text">
+              <div class="dp-order-step2-item-text-title">Vanilla</div>
+              Vanilla Minecraft <br />
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="dp-order-step1-item-root"
+          :selected="chosenRuntime == 'bedrock'"
+          @click="setChosenRuntime('bedrock')"
+          v-if="chosenPackageId != 'MCBUD1' && chosenPackageId != 'MCEX1'"
+        >
+          <div class="dp-order-step2-item">
+            <div class="dp-order-step1-item-logo">
+              <img src="/img/logos/bedrock.png" height="37.5px" />
+            </div>
+            <div class="dp-order-step2-item-text">
+              <div class="dp-order-step2-item-text-title">Bedrock</div>
+              Minecraft Bedrock <br />
             </div>
           </div>
         </div>
@@ -335,68 +445,7 @@
 
     <div
       class="dp-order-step order-step2"
-      v-if="chosenPackageId && chosenPackageId.startsWith('SOFT')"
-    >
-      <div class="dp-order-step-title">
-        <div class="dp-order-step-number-root">
-          <span class="dp-order-step-number-4">4</span>
-        </div>
-        <div class="dp-order-step-name">APPLICATION PLATFORM</div>
-      </div>
-      <div class="dp-order-step-content dp-order-step2-grid">
-        <div
-          class="dp-order-step1-item-root"
-          :selected="chosenRuntime == 'haste'"
-          @click="setChosenRuntime('haste')"
-        >
-          <div class="dp-order-step2-item">
-            <div class="dp-order-step1-item-logo">
-              <img src="/img/logos/haste.png" height="37.5px" />
-            </div>
-            <div class="dp-order-step2-item-text">
-              <div class="dp-order-step2-item-text-title">Haste Server</div>
-              Take control over your live stream <br />
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="dp-order-step1-item-root"
-          :selected="chosenRuntime == 'nginx'"
-          @click="setChosenRuntime('nginx')"
-        >
-          <div class="dp-order-step2-item">
-            <div class="dp-order-step1-item-logo">
-              <img src="/img/logos/nginx.webp" height="37.5px" />
-            </div>
-            <div class="dp-order-step2-item-text">
-              <div class="dp-order-step2-item-text-title">Nginx</div>
-              Accelerate your website content <br />
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="dp-order-step1-item-root"
-          :selected="chosenRuntime == 'wordpress'"
-          @click="setChosenRuntime('wordpress')"
-        >
-          <div class="dp-order-step2-item">
-            <div class="dp-order-step1-item-logo">
-              <img src="/img/logos/wordpress.png" height="37.5px" />
-            </div>
-            <div class="dp-order-step2-item-text">
-              <div class="dp-order-step2-item-text-title">Wordpress</div>
-              A web content management system <br />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div
-      class="dp-order-step order-step2"
-      v-if="chosenPackageId && chosenPackageId.startsWith('LN')"
+      v-if="chosenPackageId && chosenPackageId.startsWith('DCBOT')"
     >
       <div class="dp-order-step-title">
         <div class="dp-order-step-number-root">
@@ -416,7 +465,7 @@
             </div>
             <div class="dp-order-step2-item-text">
               <div class="dp-order-step2-item-text-title">Python</div>
-              General-purpose programming language <br />
+              High-level, general-purpose language. <br />
             </div>
           </div>
         </div>
@@ -425,30 +474,15 @@
           class="dp-order-step1-item-root"
           :selected="chosenRuntime == 'nodejs'"
           @click="setChosenRuntime('nodejs')"
+          v-if="chosenPackageId != 'MCBUD1' && chosenPackageId != 'MCEX1'"
         >
           <div class="dp-order-step2-item">
             <div class="dp-order-step1-item-logo">
               <img src="/img/logos/nodejs-2.png" height="37.5px" />
             </div>
             <div class="dp-order-step2-item-text">
-              <div class="dp-order-step2-item-text-title">NodeJS</div>
-              Back-end JavaScript runtime <br />
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="dp-order-step1-item-root"
-          :selected="chosenRuntime == 'dart'"
-          @click="setChosenRuntime('dart')"
-        >
-          <div class="dp-order-step2-item">
-            <div class="dp-order-step1-item-logo">
-              <img src="/img/logos/dart.png" height="37.5px" />
-            </div>
-            <div class="dp-order-step2-item-text">
-              <div class="dp-order-step2-item-text-title">Dart</div>
-              A client-optimized language <br />
+              <div class="dp-order-step2-item-text-title">Node.js</div>
+              JavaScript runtime environment <br />
             </div>
           </div>
         </div>
@@ -464,7 +498,247 @@
             </div>
             <div class="dp-order-step2-item-text">
               <div class="dp-order-step2-item-text-title">Java</div>
-              Object-oriented programming language <br />
+              Object-oriented language <br />
+            </div>
+          </div>
+        </div>
+
+      <div
+          class="dp-order-step1-item-root"
+          :selected="chosenRuntime == 'jmusic'"
+          @click="setChosenRuntime('jmusic')"
+        >
+          <div class="dp-order-step2-item">
+            <div class="dp-order-step1-item-logo">
+              <img src="/img/logos/jmusic.png" height="37.5px" />
+            </div>
+            <div class="dp-order-step2-item-text">
+              <div class="dp-order-step2-item-text-title">Jmusic</div>
+              Discord music bot <br />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div
+      class="dp-order-step order-step2"
+      v-if="chosenPackageId && chosenPackageId.startsWith('CL')"
+    >
+      <div class="dp-order-step-title">
+        <div class="dp-order-step-number-root">
+          <span class="dp-order-step-number-4">4</span>
+        </div>
+        <div class="dp-order-step-name">APPLICATION PLATFORM</div>
+      </div>
+      <div class="dp-order-step-content dp-order-step2-grid">
+        <div
+          class="dp-order-step1-item-root"
+          :selected="chosenRuntime == 'rust'"
+          @click="setChosenRuntime('rust')"
+        >
+          <div class="dp-order-step2-item">
+            <div class="dp-order-step1-item-logo">
+              <img src="/img/logos/steam/rust.png" height="37.5px" />
+            </div>
+            <div class="dp-order-step2-item-text">
+              <div class="dp-order-step2-item-text-title">Rust</div>
+              Everything wants you to die <br />
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="dp-order-step1-item-root"
+          :selected="chosenRuntime == 'gmod'"
+          @click="setChosenRuntime('gmod')"
+        >
+          <div class="dp-order-step2-item">
+            <div class="dp-order-step1-item-logo">
+              <img src="/img/logos/steam/gmod.png" height="37.5px" />
+            </div>
+            <div class="dp-order-step2-item-text">
+              <div class="dp-order-step2-item-text-title">Gmod</div>
+              A sandbox physics game <br />
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="dp-order-step1-item-root"
+          :selected="chosenRuntime == 'vrising'"
+          @click="setChosenRuntime('vrising')"
+        >
+          <div class="dp-order-step2-item">
+            <div class="dp-order-step1-item-logo">
+              <img src="/img/logos/steam/vrising.png" height="37.5px" />
+            </div>
+            <div class="dp-order-step2-item-text">
+              <div class="dp-order-step2-item-text-title">V Rising</div>
+              A Vampire Survival Experience <br />
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="dp-order-step1-item-root"
+          :selected="chosenRuntime == 'satisfactory'"
+          @click="setChosenRuntime('satisfactory')"
+        >
+          <div class="dp-order-step2-item">
+            <div class="dp-order-step1-item-logo">
+              <img src="/img/logos/steam/satisfactory.png" height="37.5px" />
+            </div>
+            <div class="dp-order-step2-item-text">
+              <div class="dp-order-step2-item-text-title">Satisfactory</div>
+              Open-World factory building game <br />
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="dp-order-step1-item-root"
+          :selected="chosenRuntime == 'unturned'"
+          @click="setChosenRuntime('unturned')"
+        >
+          <div class="dp-order-step2-item">
+            <div class="dp-order-step1-item-logo">
+              <img src="/img/logos/steam/unturned.png" height="37.5px" />
+            </div>
+            <div class="dp-order-step2-item-text">
+              <div class="dp-order-step2-item-text-title">Unturned</div>
+              Free-to-play survival game <br />
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="dp-order-step1-item-root"
+          :selected="chosenRuntime == 'scpsl'"
+          @click="setChosenRuntime('scpsl')"
+        >
+          <div class="dp-order-step2-item">
+            <div class="dp-order-step1-item-logo">
+              <img src="/img/logos/steam/scpsl.webp" height="37.5px" />
+            </div>
+            <div class="dp-order-step2-item-text">
+              <div class="dp-order-step2-item-text-title">SCP Secret Laboratory</div>
+              How will you act amidst a containment breach? <br />
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="dp-order-step1-item-root"
+          :selected="chosenRuntime == 'vanilla'"
+          @click="setChosenRuntime('vanilla')"
+        >
+          <div class="dp-order-step1-item">
+            <div class="dp-order-step1-item-logo">
+              <img src="/img/logos/steam/terraria.gif" height="37.5px" />
+            </div>
+            <div class="dp-order-step2-item-text">
+              <div class="dp-order-step2-item-text-title">Terraria</div>
+              Dig, Fight, Build <br />
+            </div>
+          </div>
+        </div>
+
+        <tooltip
+          style="width: 100% !important"
+          text="Currently unavailable."
+        >
+        <div
+          class="dp-order-step1-item-root"
+          :selected="chosenRuntime == 'stardew'"
+          disabled="true"
+        >
+          <div class="dp-order-step1-item">
+            <div class="dp-order-step1-item-logo">
+              <img src="/img/logos/steam/stardew.png" style="width: 50px" />
+            </div>
+            <div class="dp-order-step2-item-text">
+              <div class="dp-order-step2-item-text-title">Stardew</div>
+              Peaceful Farming Game <br />
+            </div>
+          </div>
+        </div>
+      </tooltip>
+
+        <div
+          class="dp-order-step1-item-root"
+          :selected="chosenRuntime == 'valheim'"
+          @click="setChosenRuntime('valheim')"
+          v-if="chosenPackageId != 'MCBUD1' && chosenPackageId != 'MCEX1'"
+        >
+          <div class="dp-order-step2-item">
+            <div class="dp-order-step1-item-logo">
+              <img src="/img/logos/steam/valheim.png" height="37.5px" />
+            </div>
+            <div class="dp-order-step2-item-text">
+              <div class="dp-order-step2-item-text-title">Valheim</div>
+              Survival and Sandbox video game <br />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="dp-order-step order-step2"
+      v-if="chosenPackageId && chosenPackageId.startsWith('DB')"
+    >
+      <div class="dp-order-step-title">
+        <div class="dp-order-step-number-root">
+          <span class="dp-order-step-number-4">4</span>
+        </div>
+        <div class="dp-order-step-name">APPLICATION PLATFORM</div>
+      </div>
+      <div class="dp-order-step-content dp-order-step2-grid">
+        <div
+          class="dp-order-step1-item-root"
+          :selected="chosenRuntime == 'mongo'"
+          @click="setChosenRuntime('mongo')"
+        >
+          <div class="dp-order-step2-item">
+            <div class="dp-order-step1-item-logo">
+              <img src="/img/logos/mongodb.png" height="37.5px" />
+            </div>
+            <div class="dp-order-step2-item-text">
+              <div class="dp-order-step2-item-text-title">MongoDB</div>
+              Document-oriented database program <br />
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="dp-order-step1-item-root"
+          :selected="chosenRuntime == 'mariadb'"
+          @click="setChosenRuntime('mariadb')"
+        >
+          <div class="dp-order-step2-item">
+            <div class="dp-order-step1-item-logo">
+              <img src="/img/logos/mariadb.png" height="37.5px" />
+            </div>
+            <div class="dp-order-step2-item-text">
+              <div class="dp-order-step2-item-text-title">MariaDB</div>
+              Relational database management system <br />
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="dp-order-step1-item-root"
+          :selected="chosenRuntime == 'redis'"
+          @click="setChosenRuntime('redis')"
+        >
+          <div class="dp-order-step2-item">
+            <div class="dp-order-step1-item-logo">
+              <img src="/img/logos/redis.png" height="37.5px" />
+            </div>
+            <div class="dp-order-step2-item-text">
+              <div class="dp-order-step2-item-text-title">Redis</div>
+              Redis Stack Server <br />
             </div>
           </div>
         </div>
@@ -584,51 +858,6 @@
       </div>
     </div>
 
-    <div
-      class="dp-order-step order-step2"
-      v-if="chosenPackageId && chosenPackageId.startsWith('DIS')"
-    >
-      <div class="dp-order-step-title">
-        <div class="dp-order-step-number-root">
-          <span class="dp-order-step-number-4">4</span>
-        </div>
-        <div class="dp-order-step-name">APPLICATION PLATFORM</div>
-      </div>
-      <div class="dp-order-step-content dp-order-step2-grid">
-        <div
-          class="dp-order-step1-item-root"
-          :selected="chosenRuntime == 'jmusic'"
-          @click="setChosenRuntime('jmusic')"
-        >
-          <div class="dp-order-step2-item">
-            <div class="dp-order-step1-item-logo">
-              <img src="/img/logos/jmusic.jpg" height="37.5px" />
-            </div>
-            <div class="dp-order-step2-item-text">
-              <div class="dp-order-step2-item-text-title">Jmusic Bot</div>
-              A Discord music bot <br />
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="dp-order-step1-item-root"
-          :selected="chosenRuntime == 'ree6'"
-          @click="setChosenRuntime('ree6')"
-        >
-          <div class="dp-order-step2-item">
-            <div class="dp-order-step1-item-logo">
-              <img src="/img/logos/ree6.png" height="37.5px" />
-            </div>
-            <div class="dp-order-step2-item-text">
-              <div class="dp-order-step2-item-text-title">Ree6</div>
-              An all-in-one Discord Bot <br />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <div class="dp-order-step order-step2">
       <div class="dp-order-step-title">
         <div class="dp-order-step-number-root">
@@ -720,7 +949,7 @@
       <div class="dp-order-underbar-totalmonthly-root">
         <div class="dp-order-underbar-totalmonthly-text">Total:</div>
         <div class="dp-order-underbar-totalmonthly-price">
-          ᕲ{{ calculateMonthlyTotal()
+          ${{ calculateMonthlyTotal()
           }}<small class="dp-order-underbar-totalmonthly-price-small"
             >/month</small
           >
@@ -891,8 +1120,8 @@ export default {
 
       var packageId = object.dataset.packageid;
 
-      if (packageId == "DUCO") {
-        this.setChosenRuntime("ducominer");
+      if (packageId == "MCBUD1") {
+        this.setChosenRuntime("java");
       }
 
       this.setPackageNvmeState(packageId);
@@ -951,11 +1180,11 @@ export default {
       monthlyTotal = vm.stringPriceToFloat(monthlyTotal);
 
       if (vm.chosenBillingPeriod != "1") {
-        return `You will pay ᕲ${vm.floatPriceToString(
+        return `You will pay $${vm.floatPriceToString(
           monthlyTotal * vm.chosenBillingPeriod
         )} every ${
           vm.chosenBillingPeriod
-        } months. You will pay ᕲ${vm.floatPriceToString(
+        } months. You will pay $${vm.floatPriceToString(
           monthlyTotal * vm.chosenBillingPeriod
         )} after deploying.`;
       } else {
@@ -1053,7 +1282,7 @@ export default {
     //default config
     this.setChosenApp("pterodactyl");
     this.setChosenLocation("us1");
-    this.setChosenRuntime("");
+    this.setChosenRuntime("paper");
 
     var vm = this;
 
@@ -1081,163 +1310,405 @@ export default {
       nvmeDisk: false,
       chosenServerNames: [""],
       qemuPackages: [
+        {
+          code: "AX412",
+          name: "VPS 2",
+          specs: {
+            cpu: 2,
+            ram: 1024,
+            disk: 10240,
+          },
+          network: {
+            speed: "100 Mbit/s",
+            ipv4: true,
+            ipv4_type: "NAT",
+            ipv6: true,
+            ipv6_type: "Public",
+          },
+          images: ["Linux"],
+          price: "4.30",
+        },
+
+        {
+          code: "AX413",
+          name: "VPS 3",
+          specs: {
+            cpu: 2,
+            ram: 1024,
+            disk: 20480,
+          },
+          network: {
+            speed: "250 Mbit/s",
+            ipv4: true,
+            ipv4_type: "NAT",
+            ipv6: true,
+            ipv6_type: "Public",
+          },
+          images: ["Linux"],
+          price: "5.47",
+        },
+
+        {
+          code: "AX414",
+          name: "VPS 4",
+          specs: {
+            cpu: 4,
+            ram: 2048,
+            disk: 20480,
+          },
+          network: {
+            speed: "250 Mbit/s",
+            ipv4: true,
+            ipv4_type: "NAT",
+            ipv6: true,
+            ipv6_type: "Public",
+          },
+          images: ["Linux"],
+          price: "8.49",
+        },
+
+        {
+          code: "AX415",
+          name: "VPS 5",
+          specs: {
+            cpu: 4,
+            ram: 4096,
+            disk: 40960,
+          },
+          network: {
+            speed: "500 Mbit/s",
+            ipv4: true,
+            ipv4_type: "NAT",
+            ipv6: true,
+            ipv6_type: "Public",
+          },
+          images: ["Linux", "Windows"],
+          price: "10.32",
+        },
+
+        {
+          code: "AX416",
+          name: "VPS 6",
+          specs: {
+            cpu: 4,
+            ram: 8192,
+            disk: 81920,
+          },
+          network: {
+            speed: "1 Gbit/s",
+            ipv4: true,
+            ipv4_type: "NAT",
+            ipv6: true,
+            ipv6_type: "Public",
+          },
+          images: ["Linux", "Windows"],
+          price: "20.74",
+        },
+
+        {
+          code: "AX417",
+          name: "VPS 7",
+          specs: {
+            cpu: 8,
+            ram: 8192,
+            disk: 81920,
+          },
+          network: {
+            speed: "1 Gbit/s",
+            ipv4: true,
+            ipv4_type: "NAT",
+            ipv6: true,
+            ipv6_type: "Public",
+          },
+          images: ["Linux", "Windows"],
+          price: "22.09",
+        },
+        {
+          code: "AX418",
+          name: "VPS 8",
+          specs: {
+            cpu: 12,
+            ram: 8192,
+            disk: 81920,
+          },
+          network: {
+            speed: "1 Gbit/s",
+            ipv4: true,
+            ipv4_type: "NAT",
+            ipv6: true,
+            ipv6_type: "Public",
+          },
+          images: ["Linux", "Windows"],
+          price: "29.28",
+        },
+        {
+          code: "AX419",
+          name: "VPS 9",
+          specs: {
+            cpu: 12,
+            ram: 16384,
+            disk: 122880,
+          },
+          network: {
+            speed: "1 Gbit/s",
+            ipv4: true,
+            ipv4_type: "NAT",
+            ipv6: true,
+            ipv6_type: "Public",
+          },
+          images: ["Linux", "Windows"],
+          price: "46.80",
+        },
       ],
       pterodactylTopCategories: [
         {
-          code: "mr1",
-          title: "Duco Miner",
-          subtitle: "Rent DUCO Power",
-          image_url: "/img/logos/duco/duino.png",
+          code: "mc1",
+          title: "Minecraft",
+          subtitle: "Minecart",
+          image_url: "https://static.wikia.nocookie.net/minecraft_gamepedia/images/0/00/Allay_Dancing.gif",
         },
+
         {
-          code: "xmg1",
-          title: "Magi Miner",
-          subtitle: "Rent Magi Power",
-          image_url: "/img/logos/magi.png",
+          code: "dc1",
+          title: "Discord Bot",
+          subtitle: "Cheap bot hosting",
+          image_url: "https://media.tenor.com/YIjtsfPjKxgAAAAi/discord-wumpu.gif",
         },
+
         {
-          code: "sf1",
-          title: "Software",
-          subtitle: "Cloud Software",
-          image_url: "/img/logos/software.png",
+          code: "cl1",
+          title: "Steam Servers",
+          subtitle: "Steam Powered",
+          image_url: "/img/logos/steam/steampowered-icon.svg",
         },
+
         {
-          code: "ln1",
-          title: "Languages",
-          subtitle: "Coding languages for Scripts and bots",
-          image_url: "/img/logos/languages.png",
+          code: "db1",
+          title: "Database Servers",
+          subtitle: "Cloud Hosted Databases",
+          image_url: "/img/icons/db.png",
         },
-        {
-          code: "dis1",
-          title: "Discord Bots",
-          subtitle: "Premade Discord Bots",
-          image_url: "/img/logos/discord.png",
-        },
+        
       ],
       pterodactylPackages: [
-      {
-        code: "DUCOMR1",
-        name: "Web Miner",
-        regions: ["us4"],
-        specs: {
-          cpu: 0.50,
-          ram: "256 MB",
-          disk: "∞ GB",
-        },
-        categories: ["mr1"],
-        price: "2.00",
-      },
-      {
-        code: "DUCOMR2",
-        name: "PC Miner",
-        regions: ["us4"],
-        specs: {
-          cpu: 1,
-          ram: "256 MB",
-          disk: "∞ GB",
-        },
-        categories: ["mr1"],
-        price: "10.00",
-      },
-      {
-        code: "DUCOMR3",
-        name: "AVR Miner",
-        regions: ["us4"],
-        specs: {
-          cpu: 2,
-          ram: "256 MB",
-          disk: "∞ GB",
-        },
-        categories: ["mr1"],
-        price: "15.00",
-      },
-
-      {
-        code: "MAGIMR1",
-        name: "Magi Mini",
-        regions: ["us1"],
-        specs: {
-          cpu: 1,
-          ram: "25 MB",
-          disk: "1 GB",
-        },
-        categories: ["xmg1"],
-        price: "2.50",
-      },
-      {
-        code: "MAGIMR2",
-        name: "Magi Pro",
-        regions: ["us1"],
-        specs: {
-          cpu: 4,
-          ram: "25 MB",
-          disk: "1 GB",
-        },
-        categories: ["xmg1"],
-        price: "25.00",
-      },
-
         {
-          code: "SOFT1",
-          name: "Software 1",
-          regions: ["us3", "us2", "us1"],
+          code: "MCJ1",
+          name: "4GB JAVA",
+          regions: ["us1", "us2"],
           specs: {
-            cpu: "∞",
-            ram: "512 MB",
-            disk: "5 GB",
+            cpu: 2,
+            ram: "4 GB",
+            disk: "∞ GB",
           },
-          categories: ["sf1"],
-          price: "5.00",
+          categories: ["mc1"],
+          price: "0.00",
         },
         {
-          code: "SOFT2",
-          name: "Software 2",
-          regions: ["us3", "us2", "us1"],
+          code: "MCJ2",
+          name: "8GB JAVA",
+          regions: ["us1", "us2"],
           specs: {
-            cpu: "∞",
-            ram: "1 GB",
-            disk: "10 GB",
+            cpu: 2,
+            ram: "8 GB",
+            disk: "∞ GB",
           },
-          categories: ["sf1"],
-          price: "10.00",
-        },     
+          categories: ["mc1"],
+          price: "0.00",
+        },
+        {
+          code: "MCJ3",
+          name: "12GB JAVA",
+          regions: ["us1", "us2"],
+          specs: {
+            cpu: 2,
+            ram: "12 GB",
+            disk: "∞ GB",
+          },
+          categories: ["mc1"],
+          price: "0.00",
+        },
 
         {
-          code: "LN1",
-          name: "Language 1",
-          regions: ["us3", "us2", "us1"],
+          code: "DCBOT1",
+          name: "Discord 1",
+          regions: ["us1", "us2"],
           specs: {
-            cpu: "1",
-            ram: "512 MB",
+            cpu: 0.5,
+            ram: "128 MB",
+            disk: "1 GB",
+          },
+          categories: ["dc1"],
+          price: "0.75",
+        },
+        {
+          code: "DCBOT2",
+          name: "Discord 2",
+          regions: ["us1", "us2"],
+          specs: {
+            cpu: 0.5,
+            ram: "256 MB",
             disk: "2 GB",
           },
-          categories: ["ln1"],
-          price: "5.00",
+          categories: ["dc1"],
+          price: "0.90",
         },
         {
-          code: "LN2",
-          name: "Language 2",
-          regions: ["us3", "us2", "us1"],
+          code: "DCBOT3",
+          name: "Discord 3",
+          regions: ["us1", "us2"],
           specs: {
-            cpu: "2",
-            ram: "1024 MB",
+            cpu: 1,
+            ram: "1 GB",
             disk: "4 GB",
           },
-          categories: ["ln1"],
-          price: "10.00",
+          categories: ["dc1"],
+          price: "1.25",
+        },
+        {
+          code: "DCBOT4",
+          name: "Discord 4",
+          regions: ["us1", "us2"],
+          specs: {
+            cpu: 1,
+            ram: "2 GB",
+            disk: "10 GB",
+          },
+          categories: ["dc1"],
+          price: "2.25",
+        },
+        {
+          code: "DCBOT5",
+          name: "Discord 5",
+          regions: ["us1", "us2"],
+          specs: {
+            cpu: 1,
+            ram: "3 GB",
+            disk: "15 GB",
+          },
+          categories: ["dc1"],
+          price: "3.35",
+        },
+        {
+          code: "DCBOT6",
+          name: "Discord 6",
+          regions: ["us1", "us2"],
+          specs: {
+            cpu: 1.5,
+            ram: "4 GB",
+            disk: "20 GB",
+          },
+          categories: ["dc1"],
+          price: "4.45",
         },
 
         {
-          code: "DIS1",
-          name: "Discord 1",
-          regions: ["us3", "us2", "us1"],
+          code: "CL1",
+          name: "Steam 1",
+          regions: ["us1"],
           specs: {
-            cpu: "1",
-            ram: "1 GB",
+            cpu: 2,
+            ram: "4 GB",
+            disk: "35 GB",
+          },
+          categories: ["cl1"],
+          price: "5.00",
+        },
+        {
+          code: "CL2",
+          name: "Steam 2",
+          regions: ["us1"],
+          specs: {
+            cpu: 4,
+            ram: "4 GB",
+            disk: "70 GB",
+          },
+          categories: ["cl1"],
+          price: "10.00",
+        },
+        {
+          code: "CL3",
+          name: "Steam 3",
+          regions: ["us1"],
+          specs: {
+            cpu: 6,
+            ram: "8 GB",
+            disk: "140 GB",
+          },
+          categories: ["cl1"],
+          price: "15.00",
+        },
+        {
+          code: "CL4",
+          name: "Steam 4",
+          regions: ["us1"],
+          specs: {
+            cpu: 6,
+            ram: "12 GB",
+            disk: "180 GB",
+          },
+          categories: ["cl1"],
+          price: "20.00",
+        },
+
+        {
+          code: "DB1",
+          name: "Database 1",
+          regions: ["us1", "us2"],
+          specs: {
+            cpu: 1/2,
+            ram: "512 MB",
             disk: "2 GB",
           },
-          categories: ["dis1"],
-          price: "7.00",
+          categories: ["db1"],
+          price: "0.50",
+        },
+        {
+          code: "DB2",
+          name: "Database 2",
+          regions: ["us1", "us2"],
+          specs: {
+            cpu: 1/2,
+            ram: "512 MB",
+            disk: "4 GB",
+          },
+          categories: ["db1"],
+          price: "1.00",
+        },
+        {
+          code: "DB3",
+          name: "Database 3",
+          regions: ["us1", "us2"],
+          specs: {
+            cpu: 1/2,
+            ram: "512 MB",
+            disk: "6 GB",
+          },
+          categories: ["db1"],
+          price: "1.50",
+        },
+        {
+          code: "DB4",
+          name: "Database 4",
+          regions: ["us1", "us2"],
+          specs: {
+            cpu: 1,
+            ram: "1 GB",
+            disk: "8 GB",
+          },
+          categories: ["db1"],
+          price: "2.00",
+        },
+        {
+          code: "DB5",
+          name: "Database 5",
+          regions: ["us1", "us2"],
+          specs: {
+            cpu: 2,
+            ram: "2 GB",
+            disk: "20 GB",
+          },
+          categories: ["db1"],
+          price: "6.00",
         },
       ],
     };

@@ -3,18 +3,6 @@
     <div class="dp-home-cards-grid">
       <div
         class="dp-home-cards-card-static"
-        v-if="$root?.masterData?.account?.balance != null"
-      >
-        <div class="dp-home-card-header">{{ this.$root.masterData.account.username }}'s BALANCE</div>
-        <div class="dp-home-card-content">
-          Your current account balance is: ᕲ{{
-            floatPriceToString($root.masterData.account.balance)
-          }}
-        </div>
-      </div>
-
-      <div
-        class="dp-home-cards-card-static"
         v-if="$root?.masterData?.servicesCount?.pterodactyl"
       >
         <div class="dp-home-card-header">SERVERS</div>
@@ -36,28 +24,6 @@
               : "are"
           }}
           suspended.
-        </div>
-      </div>
-      <div class="dp-home-cards-card-static">
-        <div class="dp-home-card-header">Updates</div>
-        <div class="dp-home-card-content" style="overflow-y: scroll">
-          - 5/21/23: New Billing Panel!!<br /><br />
-          </div>
-      </div>
-
-      <div class="dp-home-cards-card-static">
-        <div class="dp-home-card-header">CONTACT</div>
-        <div class="dp-home-card-content" style="padding-left: 10px">
-          <div style="margin-top: 5px">
-            <i class="fab fa-discord"></i> <a href="https://discord.gg/MVaJW8rqmH"
-              >Discord</a
-            >
-          </div>
-          <div style="margin-top: 5px">
-            <i class="fa-regular fa-globe"></i> <a href="https://ducocloud.com"
-            >Website</a
-            >
-          </div>
         </div>
       </div>
     </div>

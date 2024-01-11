@@ -4,7 +4,7 @@
       <h1>Hey, {{ this.$root.masterData.account.username }}</h1>
       <small>
         Below you can make some changes to your account. Keep in mind that these
-        changes will apply to all services that use Duco ID for
+        changes will apply to all services that use Galactiq ID for
         authentication.
       </small>
 
@@ -126,7 +126,47 @@
 
       <div class="dp-account-divide-line"></div>
 
-      <div class="dp-account-footer-text">POWERED BY DUCO ID</div>
+      <h1 style="margin-top: 5px">Add Balance</h1>
+
+      <div class="dp-account-addbalance-grid">
+        <div class="dp-account-attribute-option-root2">
+          <div class="dp-account-attribute-option-left">$</div>
+          <div class="dp-account-attribute-option-right">
+            <input
+              :value="setAddBalance"
+              @input="setAddBalance = $event.target.value"
+              type="number"
+              class="dp-account-attribute-option-input"
+              max="250"
+              min="5"
+              step=".01"
+            />
+          </div>
+        </div>
+
+        <button
+          v-if="isWaitingForPaypalUrl == true"
+          class="dp-button-primary"
+          style="width: 230px; height: 40px; padding-top: 7px"
+        >
+          <div
+            class="dp-btn-spinner"
+            style="width: 12px; height: 12px; border-width: 3px"
+          ></div>
+        </button>
+        <button
+          class="dp-button-primary"
+          @click="makePaypalCheckoutUrl()"
+          v-else
+        >
+          <i class="fa-brands fa-paypal" style="margin-right: 5px"></i>PAY WITH
+          PAYPAL
+        </button>
+      </div>
+
+      <div class="dp-account-divide-line"></div>
+
+      <div class="dp-account-footer-text">POWERED BY GALACTIQ ID</div>
     </div>
   </section>
 </template>

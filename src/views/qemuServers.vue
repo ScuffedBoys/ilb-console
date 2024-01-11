@@ -109,10 +109,10 @@
         </div>
         <div class="vps-table-item-item">
           <tooltip
-            :text="`ᕲ${floatPriceToString(vps.price)}<small>/month</small>`"
+            :text="`$${floatPriceToString(vps.price)}<small>/month</small>`"
           >
             <div class="dp-servers-table-item-item item-price">
-              ᕲ{{ floatPriceToString(vps.price) }}
+              ${{ floatPriceToString(vps.price) }}
             </div>
           </tooltip>
         </div>

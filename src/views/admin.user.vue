@@ -29,7 +29,7 @@
         <div class="dp-admin-name-data-value-row">
           <div class="dp-admin-data-data">Balance:</div>
           <div class="dp-admin-data-value">
-            ᕲ{{ floatPriceToString(userData.balance) }}
+            €{{ floatPriceToString(userData.balance) }}
           </div>
         </div>
 

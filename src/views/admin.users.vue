@@ -25,7 +25,7 @@
         <div class="dp-users-table-item">{{ user.firstName }}</div>
         <div class="dp-users-table-item">{{ user.lastName }}</div>
         <div class="dp-users-table-item">
-          ᕲ{{ floatPriceToString(user.balance) }}
+          €{{ floatPriceToString(user.balance) }}
         </div>
         <div class="dp-users-table-item">{{ user.servers.length }}</div>
         <div class="dp-users-table-item">0</div>

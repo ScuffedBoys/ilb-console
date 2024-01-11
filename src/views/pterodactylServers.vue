@@ -177,7 +177,7 @@
         </div>
 
         <tooltip
-          :text="`ᕲ${floatPriceToString(
+          :text="`$${floatPriceToString(
             server.price
           )}<small>/month</small><br>You are billed $${floatPriceToString(
             server.price * (server.billingInterval || 1)
@@ -186,7 +186,7 @@
           }.`"
         >
           <div class="dp-servers-table-item-item item-price">
-            ᕲ{{ floatPriceToString(server.price) }}
+            ${{ floatPriceToString(server.price) }}
           </div>
         </tooltip>
         <div

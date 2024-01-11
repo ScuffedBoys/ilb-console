@@ -56,6 +56,21 @@ const routes = [
     name: "Servers | ADMIN",
     component: () => import("../views/admin.pterodactylServers.vue"),
   },
+  {
+    path: "/vps",
+    name: "Qemu Servers",
+    component: () => import("../views/qemuServers.vue"),
+  },
+  {
+    path: "/vps/:vpsCode",
+    name: "VPS",
+    component: () => import("../views/vps.vue"),
+  },
+  {
+    path: "/vps/:vpsCode/:page",
+    name: "VPS2",
+    component: () => import("../views/vps.vue"),
+  },
 ];
 
 const router = createRouter({

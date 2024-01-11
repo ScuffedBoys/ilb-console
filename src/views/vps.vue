@@ -1118,10 +1118,10 @@ export default {
       const firewallRule = this.vps.firewall_rules.find(
         (r) => r.private_port == 22 && r.type == "tcp"
       );
-      return `https://console.ducocloud.com/ssh/host/${firewallRule.public_ip}?port=${firewallRule.public_port}&password=${this.vps.cloudinit.password}&username=root`;
+      return `https://console.pengucc.com/ssh/host/${firewallRule.public_ip}?port=${firewallRule.public_port}&password=${this.vps.cloudinit.password}&username=root`;
     },
     vncUri() {
-      return `https://console.ducocloud.com/novnc?autoconnect=true&resize=scale&password=${this.vps.novnc.password}&reconnect=true&reconnect_delay=1000&host=${this.vps.novnc.host}?noport=${this.vps.novnc.port}`;
+      return `https://console.pengucc.com/novnc?autoconnect=true&resize=scale&password=${this.vps.novnc.password}&reconnect=true&reconnect_delay=1000&host=${this.vps.novnc.host}?noport=${this.vps.novnc.port}`;
     },
     vpsStateIconColor() {
       const vps = this.vps;

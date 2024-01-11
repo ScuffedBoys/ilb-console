@@ -43,7 +43,7 @@
           {{ convertUtcBillingDate(invoice.date) }}
         </div>
         <div class="dp-invoices-list-table-header-item item-amount">
-          ᕲ{{ floatPriceToString(invoice.total) }}
+          ${{ floatPriceToString(invoice.total) }}
         </div>
         <div
           class="dp-invoices-list-table-header-item item-download"
