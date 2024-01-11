@@ -1,0 +1,36 @@
+{
+    "code": "MAGIMR2",
+    "hetznerPackage": null,
+    "locations": ["us1"],
+    "specs": {
+        "cpu": 400,
+        "ram": 512,
+        "disk": 1024
+    },
+    "isDedicatedCpu": false,
+    "price": 25,
+    "options": {
+        "categories": ["xmg1"],
+        "userLimit": -1,
+        "name": "Magi Pro"
+    },
+    "container": [{
+        "runtime": "default",
+        "allocationPort": 25565,
+        "egg": 15,
+        "docker_image": "quay.io/parkervcp/pterodactyl-images:base_debian",
+        "startup": "{{MINER}} -a {{ALGORITHM}} -o stratum+tcp://{{POOL}} -u {{WALLET}} -p c={{COIN}},zap={{ZAP}} -t 4 -e 90",
+        "environment": {
+            "WALLET": "9LdaBp27DWnGqxCkJeKAdAmR6mnta3tuEC",
+            "COIN": "XMG",
+            "ZAP": "XMG",
+            "ALGORITHM": "m7mhash",
+            "POOL": "m7m.na.mine.zpool.ca:6033",
+            "MINER": "./m-minerd"
+        },
+        "feature_limits": {
+            "databases": 0,
+            "backups": 0
+        }
+    }]
+}

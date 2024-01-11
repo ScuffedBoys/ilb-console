@@ -1,0 +1,33 @@
+{
+    "code": "GAME1",
+    "hetznerPackage": null,
+    "locations": ["us3", "us2", "us1"],
+    "specs": {
+        "cpu": 200,
+        "ram": 1024,
+        "disk": 6144
+    },
+    "isDedicatedCpu": false,
+    "price": 20,
+    "options": {
+        "categories": ["sf1"],
+        "userLimit": -1,
+        "name": "Software 1"
+    },
+    "container": [{
+        "runtime": "mindustry",
+        "allocationPort": 25565,
+        "egg": 22,
+        "docker_image": "ghcr.io/software-noob/pterodactyl-images:java_17_zulu",
+        "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -jar server-release.jar config port {{SERVER_PORT}},config name {{SERVER_NAME}},host {{MAPNAME}}",
+        "environment": {
+            "VERSION": "latest",
+            "SERVER_NAME": "Duco Cloud Mindustry",
+            "MAPNAME": "Tendrils"
+        },
+        "feature_limits": {
+            "databases": 0,
+            "backups": 1
+        }
+    }]
+}

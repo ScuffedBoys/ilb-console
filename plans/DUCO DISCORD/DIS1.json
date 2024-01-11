@@ -1,0 +1,91 @@
+{
+    "code": "DIS1",
+    "hetznerPackage": null,
+    "locations": ["us3", "us2", "us1"],
+    "specs": {
+        "cpu": 100,
+        "ram": 1024,
+        "disk": 2048
+    },
+    "isDedicatedCpu": false,
+    "price": 7,
+    "options": {
+        "categories": ["dis1"],
+        "userLimit": -1,
+        "name": "Discord 1"
+    },
+    "container": [{
+        "runtime": "jmusic",
+        "allocationPort": 25565,
+        "egg": 20,
+        "docker_image": "ghcr.io/pterodactyl/yolks:java_16",
+        "startup": "java -Dnogui=true -jar JMusicBot.jar",
+        "environment": {
+            "BOT_TOKEN": "You need to get a token",
+            "BOT_OWNER": "changeme",
+            "BOT_PREFIX": "@mention",
+            "BOT_ALT_PREFIX": "NONE",
+            "BOT_GAME": "DEFAULT",
+            "BOT_STATUS": "ONLINE",
+            "BOT_SONG_STATUS": "false",
+            "BOT_NPIMAGES": "false",
+            "BOT_STAY_IN_CHANNEL": "false",
+            "BOT_ALONE_TIME": "0",
+            "BOT_MAXTIME": "0"
+        },
+        "feature_limits": {
+            "databases": 0,
+            "backups": 1
+        }
+    }, {
+        "runtime": "ree6",
+        "allocationPort": 25565,
+        "egg": 21,
+        "docker_image": "ghcr.io/pterodactyl/yolks:java_17",
+        "startup": "java -Dnogui=true -jar Ree6.jar",
+        "environment": {
+            "BOT_TOKEN": "changeme",
+            "DAGPI_TOKEN": "changeme",
+            "SENTRY_DSN": "changeme",
+            "SPOTIFY_CLIENT_ID": "changeme",
+            "SPOTIFY_CLIENT_SECRET": "changeme",
+            "HEARTBEAT_URL": "none",
+            "HEARTBEAT_INTERVAL": "60",
+            "AMARI_TOKEN": "changeme",
+            "TWITCH_CLIENT_ID": "changeme",
+            "TWITCH_CLIENT_SECRET": "changeme",
+            "TWITTER_BEARER": "changeme",
+            "REDDIT_CLIENT_ID": "changeme",
+            "REDDIT_CLIENT_SECRET": "changeme",
+            "INSTAGRAM_PASSWORD": "changeme",
+            "DATABASE_USER": "root",
+            "DATABASE_DB": "root",
+            "DATABASE_PW": "changeme",
+            "DATABASE_PORT": "3306",
+            "DATABASE_TYP": "sqlite",
+            "DATABASE_FILE": "storage/Ree6.db",
+            "DATABASE_POOL": "10",
+            "DATABASE_HOST": "localhost",
+            "AI_TOKEN": "OpenAI API-Token",
+            "AI_URL": "https://api.openai.com/v1/chat/completions",
+            "AI_MODEL": "gpt-3.5-turbo-0301",
+            "MISC_STATUS": "ree6.de | %guilds% Servers. (%shard%)",
+            "MISC_FEEDBACK": "0",
+            "MISC_OWNER": "321580743488831490",
+            "MISC_INVITE": "https://invite.ree6.de",
+            "MISC_PREDEF": "You are Ree6 a Discord bot.",
+            "MISC_SUPPORT": "https://support.ree6.de",
+            "MISC_WEB": "https://ree6.de",
+            "MISC_INTERFACE": "https://cp.ree6.de",
+            "MISC_RECORD": "https://cp.ree6.de/external/recording",
+            "MISC_TWITCH": "https://cp.ree6.de/external/twitch",
+            "MISC_ADV": "powered by Duco Cloud",
+            "MISC_NAME": "Ree6",
+            "MISC_SHARD": "1"
+        },
+        "feature_limits": {
+            "databases": 0,
+            "backups": 1
+        }
+    }]
+}
