@@ -1,0 +1,178 @@
+{
+    "code": "CL1",
+    "hetznerPackage": null,
+    "locations": ["us1"],
+    "specs": {
+        "cpu": 400,
+        "ram": 4096,
+        "disk": 0
+    },
+    "isDedicatedCpu": false,
+    "price": 0,
+    "options": {
+        "categories": ["cl1"],
+        "userLimit": -1,
+        "name": "Steam 1"
+    },
+    "container": [{
+        "runtime": "rust",
+        "allocationPort": 28015,
+        "egg": 149,
+        "docker_image": "quay.io/pterodactyl/core:rust",
+        "startup": "./RustDedicated -batchmode +server.port {{SERVER_PORT}} +server.identity {rust} +rcon.port {{RCON_PORT}} +rcon.web true +server.hostname \"{{HOSTNAME}}\" +server.level \"{{LEVEL}}\" +server.description \"{{DESCRIPTION}}\" +server.url \"{{SERVER_URL}}\" +server.headerimage \"{{SERVER_IMG}}\" +server.logoimage \"{{SERVER_LOGO}}\" +server.worldsize \"{{WORLD_SIZE}}\" +server.seed \"{{WORLD_SEED}}\" +server.maxplayers {{MAX_PLAYERS}} +rcon.password \"{{RCON_PASS}}\" +server.saveinterval {{SAVEINTERVAL}} +app.port {{APP_PORT}} {{ADDITIONAL_ARGS}}",
+        "environment": {
+            "HOSTNAME": "A Rust Server",
+            "OXIDE": "0",
+            "LEVEL": "Procedural Map",
+            "DESCRIPTION": "Powered by Galactiq",
+            "SERVER_URL": "https://galactiq.net",
+            "WORLD_SIZE": "3000",
+            "WORLD_SEED": "",
+            "MAX_PLAYERS": "40",
+            "SERVER_IMG": "",
+            "RCON_PORT": "28016",
+            "RCON_PASS": "CHANGEME",
+            "SAVEINTERVAL": "60",
+            "ADDITIONAL_ARGS": "",
+            "APP_PORT": "28082",
+            "SERVER_LOGO": "",
+            "MAP_URL": ""
+        },
+        "feature_limits": {
+            "databases": 0,
+            "backups": 2
+        }
+    }, {
+        "runtime": "gmod",
+        "allocationPort": 27015,
+        "egg": 9,
+        "docker_image": "quay.io/pterodactyl/core:source",
+        "startup": "./srcds_run -game garrysmod -console -port {{SERVER_PORT}} +ip 0.0.0.0 +host_workshop_collection {{WORKSHOP_ID}} +map {{SRCDS_MAP}} +gamemode {{GAMEMODE}} -strictportbind -norestart +sv_setsteamaccount {{STEAM_ACC}} +maxplayers {{MAX_PLAYERS}}  -tickrate {{TICKRATE}}",
+        "environment": {
+            "SRCDS_MAP": "gm_flatgrass",
+            "STEAM_ACC": "",
+            "SRCDS_APPID": "4020",
+            "WORKSHOP_ID": "",
+            "GAMEMODE": "sandbox",
+            "MAX_PLAYERS": "32",
+            "TICKRATE": "22"
+        },
+        "feature_limits": {
+            "databases": 0,
+            "backups": 2
+        }
+    }, {
+        "runtime": "vrising",
+        "allocationPort": 2456,
+        "egg": 143,
+        "docker_image": "quay.io/parkervcp/pterodactyl-images:debian_wine-5",
+        "startup": "xvfb-run wine ./VRisingServer.exe -nographics -batchmode -serverName '{{SERVER_NAME}}' -port {{SERVER_PORT}} -password '{{SERVER_PASSWORD}}' -listOnMasterServer {{SERVER_PUBLIC}} -maxConnectedUsers {{MAX_USERS}}",
+        "environment": {
+            "SERVER_PASSWORD": "",
+            "SERVER_NAME": "V Rising Dedicated Server",
+            "QUERY_PORT": "9877",
+            "AUTO_UPDATE": "1",
+            "GAME_SETTINGS_PRESET": "",
+            "DESCRIPTION": "Welcome to the server!",
+            "MAX_PLAYERS": "40",
+            "MAX_ADMINS": "4",
+            "SAVE_NAME": "world1",
+            "SAVE_COUNT": "50",
+            "SAVE_INTERVAL": "600",
+            "SERVER_LIST": "true",
+            "VALIDATE": "",
+            "FPS": "30",
+            "RCON": "false",
+            "RCON_PASS": "somepassword",
+            "RCON_PORT": "25575",
+            "SERVER_SECURE": "true",
+            "ADMIN_ONLY_DEBUG_EVENTS": "true",
+            "DEBUG_EVENTS": "false",
+            "SRCDS_APPID": "1829350",
+            "WINDOWS_INSTALL": "1"
+
+        },
+        "feature_limits": {
+            "databases": 0,
+            "backups": 2
+        }
+    }, {
+        "runtime": "satisfactory",
+        "allocationPort": 7777,
+        "egg": 148,
+        "docker_image": "ghcr.io/parkervcp/games:source",
+        "startup": "./Engine/Binaries/Linux/UE4Server-Linux-Shipping FactoryGame ?listen -Port={{SERVER_PORT}} -ServerQueryPort={{QUERY_PORT}} -BeaconPort={{BEACON_PORT}} -multihome=0.0.0.0 $(if {{DISABLE_SEASONAL}}; then echo '-DisableSeasonalEvents'; fi)",
+        "environment": {
+            "QUERY_PORT": "15777",
+            "BEACON_PORT": "15000",
+            "AUTO_UPDATE": "1",
+            "VALIDATE": "",
+            "AUTOSAVE_INTERVAL": "300",
+            "NUM_AUTOSAVES": "3",
+            "UPLOAD_CRASH_REPORT": "true",
+            "DISABLE_SEASONAL": "false",
+            "MAX_PLAYERS": "4",
+            "INIT_CONNECT_TIMEOUT": "30",
+            "CONNECT_TIMEOUT": "20",
+            "NETWORK_QUALITY": "3",
+            "SRCDS_BETAID": "",
+            "SRCDS_APPID": "1690800"
+
+        },
+        "feature_limits": {
+            "databases": 0,
+            "backups": 2
+        }
+    }, {
+        "runtime": "unturned",
+        "allocationPort": 7777,
+        "egg": 145,
+        "docker_image": "quay.io/parkervcp/pterodactyl-images:debian_source",
+        "startup": "./Unturned_Headless.x86_64 -batchmode -nographics -bind 0.0.0.0 -port {{SERVER_PORT}}",
+        "environment": {
+            "LD_LIBRARY_PATH": "./Unturned_Headless_Data/Plugins/x86_64/",
+            "STEAM_USER": "",
+            "STEAM_PASS": "",
+            "SRCDS_APPID": "1110390"
+
+        },
+        "feature_limits": {
+            "databases": 0,
+            "backups": 2
+        }
+    }, {
+        "runtime": "scpsl",
+        "allocationPort": 7777,
+        "egg": 147,
+        "docker_image": "ghcr.io/parkervcp/yolks:mono_latest",
+        "startup": "./LocalAdmin {{SERVER_PORT}}",
+        "environment": {
+            "DOTNET_BUNDLE_EXTRACT_BASE_DIR": "./dotnet-bundle",
+            "SRCDS_APPID": "996560"
+
+        },
+        "feature_limits": {
+            "databases": 0,
+            "backups": 2
+        }
+    }, {
+        "runtime": "vanilla",
+        "allocationPort": 7777,
+        "egg": 28,
+        "docker_image": "ghcr.io/parkervcp/yolks:debian",
+        "startup": "./TerrariaServer.bin.x86_64 -config serverconfig.txt",
+        "environment": {
+            "TERRARIA_VERSION": "latest",
+            "WORLD_NAME": "world",
+            "MAX_PLAYERS": "8",
+            "WORLD_SIZE": "1",
+            "WORLD_DIFFICULTY": "3",
+            "SERVER_MOTD": "Welcome!"
+
+        },
+        "feature_limits": {
+            "databases": 0,
+            "backups": 2
+        }
+    }]
+}

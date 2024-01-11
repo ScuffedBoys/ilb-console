@@ -324,23 +324,6 @@
 
         <div
           class="dp-order-step1-item-root"
-          :selected="chosenRuntime == 'pufferfish'"
-          @click="setChosenRuntime('pufferfish')"
-          v-if="chosenPackageId != 'MCBUD1' && chosenPackageId != 'MCEX1'"
-        >
-          <div class="dp-order-step2-item">
-            <div class="dp-order-step1-item-logo">
-              <img src="/img/logos/pufferfish.gif" height="37.5px" />
-            </div>
-            <div class="dp-order-step2-item-text">
-              <div class="dp-order-step2-item-text-title">Pufferfish</div>
-              A highly optimized Paper fork <br />
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="dp-order-step1-item-root"
           :selected="chosenRuntime == 'Bungeecord'"
           @click="setChosenRuntime('Bungeecord')"
           v-if="chosenPackageId != 'MCBUD1' && chosenPackageId != 'MCEX1'"
@@ -369,23 +352,6 @@
             <div class="dp-order-step2-item-text">
               <div class="dp-order-step2-item-text-title">Forge</div>
               Minecraft modding API <br />
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="dp-order-step1-item-root"
-          :selected="chosenRuntime == 'Arclight'"
-          @click="setChosenRuntime('Arclight')"
-          v-if="chosenPackageId != 'MCBUD1' && chosenPackageId != 'MCEX1'"
-        >
-          <div class="dp-order-step2-item">
-            <div class="dp-order-step1-item-logo">
-              <img src="/img/logos/arclight.png" height="37.5px" />
-            </div>
-            <div class="dp-order-step2-item-text">
-              <div class="dp-order-step2-item-text-title">Arclight</div>
-              Bukkit and Forge in one <br />
             </div>
           </div>
         </div>
@@ -664,23 +630,6 @@
           </div>
         </div>
       </tooltip>
-
-        <div
-          class="dp-order-step1-item-root"
-          :selected="chosenRuntime == 'valheim'"
-          @click="setChosenRuntime('valheim')"
-          v-if="chosenPackageId != 'MCBUD1' && chosenPackageId != 'MCEX1'"
-        >
-          <div class="dp-order-step2-item">
-            <div class="dp-order-step1-item-logo">
-              <img src="/img/logos/steam/valheim.png" height="37.5px" />
-            </div>
-            <div class="dp-order-step2-item-text">
-              <div class="dp-order-step2-item-text-title">Valheim</div>
-              Survival and Sandbox video game <br />
-            </div>
-          </div>
-        </div>
       </div>
     </div>
 
@@ -1538,7 +1487,7 @@ export default {
             disk: "1 GB",
           },
           categories: ["dc1"],
-          price: "0.75",
+          price: "0.00",
         },
         {
           code: "DCBOT2",
@@ -1550,7 +1499,7 @@ export default {
             disk: "2 GB",
           },
           categories: ["dc1"],
-          price: "0.90",
+          price: "0.00",
         },
         {
           code: "DCBOT3",
@@ -1562,7 +1511,7 @@ export default {
             disk: "4 GB",
           },
           categories: ["dc1"],
-          price: "1.25",
+          price: "0.00",
         },
         {
           code: "DCBOT4",
@@ -1574,7 +1523,7 @@ export default {
             disk: "10 GB",
           },
           categories: ["dc1"],
-          price: "2.25",
+          price: "0.00",
         },
         {
           code: "DCBOT5",
@@ -1586,7 +1535,7 @@ export default {
             disk: "15 GB",
           },
           categories: ["dc1"],
-          price: "3.35",
+          price: "0.00",
         },
         {
           code: "DCBOT6",
@@ -1598,7 +1547,7 @@ export default {
             disk: "20 GB",
           },
           categories: ["dc1"],
-          price: "4.45",
+          price: "0.00",
         },
 
         {
@@ -1611,7 +1560,7 @@ export default {
             disk: "35 GB",
           },
           categories: ["cl1"],
-          price: "5.00",
+          price: "0.00",
         },
         {
           code: "CL2",
@@ -1623,7 +1572,7 @@ export default {
             disk: "70 GB",
           },
           categories: ["cl1"],
-          price: "10.00",
+          price: "0.00",
         },
         {
           code: "CL3",
@@ -1635,19 +1584,7 @@ export default {
             disk: "140 GB",
           },
           categories: ["cl1"],
-          price: "15.00",
-        },
-        {
-          code: "CL4",
-          name: "Steam 4",
-          regions: ["us1"],
-          specs: {
-            cpu: 6,
-            ram: "12 GB",
-            disk: "180 GB",
-          },
-          categories: ["cl1"],
-          price: "20.00",
+          price: "0.00",
         },
 
         {
@@ -1660,7 +1597,7 @@ export default {
             disk: "2 GB",
           },
           categories: ["db1"],
-          price: "0.50",
+          price: "0.00",
         },
         {
           code: "DB2",
@@ -1672,7 +1609,7 @@ export default {
             disk: "4 GB",
           },
           categories: ["db1"],
-          price: "1.00",
+          price: "0.00",
         },
         {
           code: "DB3",
@@ -1684,7 +1621,7 @@ export default {
             disk: "6 GB",
           },
           categories: ["db1"],
-          price: "1.50",
+          price: "0.00",
         },
         {
           code: "DB4",
@@ -1696,7 +1633,7 @@ export default {
             disk: "8 GB",
           },
           categories: ["db1"],
-          price: "2.00",
+          price: "0.00",
         },
         {
           code: "DB5",
@@ -1708,7 +1645,7 @@ export default {
             disk: "20 GB",
           },
           categories: ["db1"],
-          price: "6.00",
+          price: "0.00",
         },
       ],
     };

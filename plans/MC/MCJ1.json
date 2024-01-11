@@ -1,0 +1,127 @@
+{
+    "code": "MCJ1",
+    "hetznerPackage": null,
+    "locations": ["us1", "us2"],
+    "specs": {
+        "cpu": 200,
+        "ram": 4096,
+        "disk": 0
+    },
+    "isDedicatedCpu": false,
+    "price": 0,
+    "options": {
+        "categories": ["mc1"],
+        "userLimit": -1,
+        "name": "4GB Java"
+    },
+    "container": [{
+        "runtime": "java",
+        "allocationPort": 25565,
+        "egg": 5,
+        "docker_image": "ghcr.io/pterodactyl/yolks:java_17",
+        "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -Dterminal.jline=false -Dterminal.ansi=true -jar {{SERVER_JARFILE}}",
+        "environment": {
+            "SERVER_JARFILE": "server.jar",
+            "VANILLA_VERSION": "latest"
+        },
+        "feature_limits": {
+            "databases": 0,
+            "backups": 2
+        }
+    }, {
+        "runtime": "bedrock",
+        "allocationPort": 19132,
+        "egg": 179,
+        "docker_image": "ghcr.io/parkervcp/yolks:debian",
+        "startup": "./bedrock_server",
+        "environment": {
+            "BEDROCK_VERSION": "latest",
+            "LD_LIBRARY_PATH": ".",
+            "SERVERNAME": "Bedrock Dedicated Server",
+            "GAMEMODE": "survival",
+            "DIFFICULTY": "easy",
+            "CHEATS": "false"
+        },
+        "feature_limits": {
+            "databases": 0,
+            "backups": 2
+        }
+    }, {
+        "runtime": "paper",
+        "allocationPort": 25565,
+        "egg": 3,
+        "docker_image": "ghcr.io/pterodactyl/yolks:java_17",
+        "startup": "java -Xms1G -Xmx3G -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:InitiatingHeapOccupancyPercent=15 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true -jar {{SERVER_JARFILE}} nogui",
+        "environment": {
+            "MINECRAFT_VERSION": "latest",
+            "SERVER_JARFILE": "server.jar",
+            "DL_PATH": "",
+            "BUILD_NUMBER": "latest"
+        },
+        "feature_limits": {
+            "databases": 0,
+            "backups": 2
+        }
+    }, {
+        "runtime": "purpur",
+        "allocationPort": 25565,
+        "egg": 16,
+        "docker_image": "ghcr.io/pterodactyl/yolks:java_17",
+        "startup": "java -Xms1G -Xmx3G -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:InitiatingHeapOccupancyPercent=15 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true -jar {{SERVER_JARFILE}} nogui",
+        "environment": {
+            "MINECRAFT_VERSION": "latest",
+            "SERVER_JARFILE": "server.jar",
+            "BUILD_NUMBER": "latest"
+        },
+        "feature_limits": {
+            "databases": 0,
+            "backups": 2
+        }
+    }, {
+        "runtime": "forge",
+        "allocationPort": 25565,
+        "egg": 2,
+        "docker_image": "ghcr.io/pterodactyl/yolks:java_18",
+        "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -Dterminal.jline=false -Dterminal.ansi=true $( [[  ! -f unix_args.txt ]] && printf %s '-jar {{SERVER_JARFILE}}' || printf %s '@unix_args.txt' )",
+        "environment": {
+            "SERVER_JARFILE": "server.jar",
+            "MC_VERSION": "latest",
+            "FORGE_VERSION": "",
+            "BUILD_TYPE": "recommended"
+        },
+        "feature_limits": {
+            "databases": 0,
+            "backups": 2
+        }
+    }, {
+        "runtime": "Fabric",
+        "allocationPort": 25565,
+        "egg": 46,
+        "docker_image": "ghcr.io/pterodactyl/yolks:java_17",
+        "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -Dterminal.jline=false -Dterminal.ansi=true -jar {{SERVER_JARFILE}}",
+        "environment": {
+            "SERVER_JARFILE": "fabric-server-launch.jar",
+            "MC_VERSION": "latest",
+            "FABRIC_VERSION": "latest",
+            "LOADER_VERSION": "latest"
+        },
+        "feature_limits": {
+            "databases": 0,
+            "backups": 2
+        }
+    }, {
+        "runtime": "Bungeecord",
+        "allocationPort": 25565,
+        "egg": 1,
+        "docker_image": "ghcr.io/pterodactyl/yolks:java_17",
+        "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -Dterminal.jline=false -Dterminal.ansi=true -jar {{SERVER_JARFILE}}",
+        "environment": {
+            "BUNGEE_VERSION": "latest",
+            "SERVER_JARFILE": "bungeecord.jar"
+        },
+        "feature_limits": {
+            "databases": 0,
+            "backups": 2
+        }
+    }]
+}

@@ -1,0 +1,86 @@
+{
+    "code": "DCBOT3",
+    "hetznerPackage": null,
+    "locations": ["us1", "us2"],
+    "specs": {
+        "cpu": 100,
+        "ram": 1024,
+        "disk": 4096
+    },
+    "isDedicatedCpu": false,
+    "price": 0,
+    "options": {
+        "categories": ["dc1"],
+        "userLimit": -1,
+        "name": "Discord 3"
+    },
+    "container": [{
+        "runtime": "nodejs",
+        "allocationPort": 80,
+        "egg": 18,
+        "docker_image": "quay.io/parkervcp/pterodactyl-images:debian_nodejs-16",
+        "startup": "if [[ -d .git ]] && [[ {{AUTO_UPDATE}} == '1' ]]; then git pull; fi; if [[ ! -z ${NODE_PACKAGES} ]]; then /usr/local/bin/npm install ${NODE_PACKAGES}; fi; if [ -f /home/container/package.json ]; then  /usr/local/bin/npm install --production; fi; /usr/local/bin/node /home/container/{{BOT_JS_FILE}}",
+        "environment": {
+            "INSTALL_REPO": "",
+            "USERNAME": "",
+            "PASSWORD": "",
+            "INSTALL_BRANCH": "",
+            "USER_UPLOAD": "1",
+            "AUTO_UPDATE": "0",
+            "BOT_JS_FILE": "index.js",
+            "NODE_PACKAGES": "discord.js"
+        },
+        "feature_limits": {
+            "databases": 3,
+            "backups": 3
+        }
+    }, {
+        "runtime": "python",
+        "allocationPort": 80,
+        "egg": 17,
+        "docker_image": "quay.io/parkervcp/pterodactyl-images:debian_python-3.8",
+        "startup": "if [[ -d .git ]] && [[ {{AUTO_UPDATE}} == '1' ]]; then git pull; fi; if [[ ! -z ${PY_PACKAGES} ]]; then pip install -U --target /home/container/ ${PY_PACKAGES}; fi; if [[ -f /home/container/requirements.txt ]]; then pip install -U --target /home/container/ -r requirements.txt; fi; /usr/local/bin/python /home/container/{{BOT_PY_FILE}}",
+        "environment": {
+            "INSTALL_REPO": "",
+            "INSTALL_BRANCH": "",
+            "USER_UPLOAD": "1",
+            "AUTO_UPDATE": "0",
+            "BOT_PY_FILE": "bot.py",
+            "PY_PACKAGES": "",
+            "USERNAME": "",
+            "PASSWORD": ""
+        },
+        "feature_limits": {
+            "databases": 3,
+            "backups": 3
+        }
+    }, {
+        "runtime": "java",
+        "allocationPort": 80,
+        "egg": 47,
+        "docker_image": "quay.io/pterodactyl/core:java-11",
+        "startup": "java -Dterminal.jline=false -Dterminal.ansi=true -jar {{JARFILE}}",
+        "environment": {
+            "JARFILE": "file.jar"
+        },
+        "feature_limits": {
+            "databases": 3,
+            "backups": 3
+        }
+    }, {
+        "runtime": "jmusic",
+        "allocationPort": 80,
+        "egg": 19,
+        "docker_image": "quay.io/parkervcp/pterodactyl-images:debian_openjdk-8-jre",
+        "startup": "java -Djavax.accessibility.assistive_technologies='' -Dnogui=true -jar JMusicBot.jar",
+        "environment": {
+            "BOT_TOKEN": "You need to get a token",
+            "BOT_PREFIX": "@mention",
+            "BOT_OWNER": "Your Discord user ID"
+        },
+        "feature_limits": {
+            "databases": 1,
+            "backups": 1
+        }
+    }]
+}
