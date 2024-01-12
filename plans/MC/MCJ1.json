@@ -31,7 +31,7 @@
     }, {
         "runtime": "bedrock",
         "allocationPort": 19132,
-        "egg": 179,
+        "egg": 21,
         "docker_image": "ghcr.io/parkervcp/yolks:debian",
         "startup": "./bedrock_server",
         "environment": {
