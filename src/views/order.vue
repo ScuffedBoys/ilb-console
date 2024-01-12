@@ -411,6 +411,68 @@
 
     <div
       class="dp-order-step order-step2"
+      v-if="chosenPackageId && chosenPackageId.startsWith('TR')"
+    >
+      <div class="dp-order-step-title">
+        <div class="dp-order-step-number-root">
+          <span class="dp-order-step-number-4">4</span>
+        </div>
+        <div class="dp-order-step-name">APPLICATION PLATFORM</div>
+      </div>
+      <div class="dp-order-step-content dp-order-step2-grid">
+        <div
+          class="dp-order-step1-item-root"
+          :selected="chosenRuntime == 'vanilla'"
+          @click="setChosenRuntime('vanilla')"
+        >
+          <div class="dp-order-step2-item">
+            <div class="dp-order-step1-item-logo">
+              <img src="/img/logos/terraria.png" height="37.5px" />
+            </div>
+            <div class="dp-order-step2-item-text">
+              <div class="dp-order-step2-item-text-title">Vanilla</div>
+              Vanilla Terraria <br />
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="dp-order-step1-item-root"
+          :selected="chosenRuntime == 'tshock'"
+          @click="setChosenRuntime('tshock')"
+        >
+          <div class="dp-order-step2-item">
+            <div class="dp-order-step1-item-logo">
+              <img src="/img/logos/steam/tshock.png" height="37.5px" />
+            </div>
+            <div class="dp-order-step2-item-text">
+              <div class="dp-order-step2-item-text-title">Tshock</div>
+              Tshock modloader <br />
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="dp-order-step1-item-root"
+          :selected="chosenRuntime == 'tmod'"
+          @click="setChosenRuntime('tmod')"
+          v-if="chosenPackageId != 'MCBUD1' && chosenPackageId != 'MCEX1'"
+        >
+          <div class="dp-order-step2-item">
+            <div class="dp-order-step1-item-logo">
+              <img src="/img/logos/steam/tmod.png" height="37.5px" />
+            </div>
+            <div class="dp-order-step2-item-text">
+              <div class="dp-order-step2-item-text-title">TMod</div>
+              TMod Loader <br />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="dp-order-step order-step2"
       v-if="chosenPackageId && chosenPackageId.startsWith('DCBOT')"
     >
       <div class="dp-order-step-title">
@@ -590,22 +652,6 @@
             <div class="dp-order-step2-item-text">
               <div class="dp-order-step2-item-text-title">SCP Secret Laboratory</div>
               How will you act amidst a containment breach? <br />
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="dp-order-step1-item-root"
-          :selected="chosenRuntime == 'vanilla'"
-          @click="setChosenRuntime('vanilla')"
-        >
-          <div class="dp-order-step1-item">
-            <div class="dp-order-step1-item-logo">
-              <img src="/img/logos/steam/terraria.gif" height="37.5px" />
-            </div>
-            <div class="dp-order-step2-item-text">
-              <div class="dp-order-step2-item-text-title">Terraria</div>
-              Dig, Fight, Build <br />
             </div>
           </div>
         </div>
@@ -1425,6 +1471,13 @@ export default {
         },
 
         {
+          code: "tr1",
+          title: "Terraria",
+          subtitle: "Minecraft Knockoff",
+          image_url: "/img/logos/terraria.png",
+        },
+
+        {
           code: "cl1",
           title: "Steam Servers",
           subtitle: "Steam Powered",
@@ -1474,6 +1527,31 @@ export default {
             disk: "∞ GB",
           },
           categories: ["mc1"],
+          price: "0.00",
+        },
+
+        {
+          code: "TR1",
+          name: "Terraria 1",
+          regions: ["us1"],
+          specs: {
+            cpu: 2,
+            ram: "2 GB",
+            disk: "∞ GB",
+          },
+          categories: ["tr1"],
+          price: "0.00",
+        },
+        {
+          code: "TR2",
+          name: "Terraria 2",
+          regions: ["us1"],
+          specs: {
+            cpu: 4,
+            ram: "4 GB",
+            disk: "∞ GB",
+          },
+          categories: ["tr1"],
           price: "0.00",
         },
 

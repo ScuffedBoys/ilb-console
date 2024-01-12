@@ -1,0 +1,135 @@
+{
+    "code": "TR2",
+    "hetznerPackage": null,
+    "locations": ["us1"],
+    "specs": {
+        "cpu": 400,
+        "ram": 4096,
+        "disk": 0
+    },
+    "isDedicatedCpu": false,
+    "price": 0,
+    "options": {
+        "categories": ["tr1"],
+        "userLimit": -1,
+        "name": "Terraria 2"
+    },
+    "container": [{
+        "runtime": "vanilla",
+        "allocationPort": 25565,
+        "egg": 28,
+        "docker_image": "ghcr.io/parkervcp/yolks:debian",
+        "startup": "./TerrariaServer.bin.x86_64 -config serverconfig.txt",
+        "environment": {
+            "TERRARIA_VERSION": "latest",
+            "WORLD_NAME": "world",
+            "MAX_PLAYERS": "8",
+            "WORLD_SIZE": "1",
+            "WORLD_DIFFICULTY": "3",
+            "SERVER_MOTD": "Welcome!"
+        },
+        "feature_limits": {
+            "databases": 0,
+            "backups": 2
+        }
+    }, {
+        "runtime": "tshock",
+        "allocationPort": 19132,
+        "egg": 29,
+        "docker_image": "quay.io/pterodactyl/core:mono",
+        "startup": "mono TerrariaServer.exe -ip 0.0.0.0 -port {{SERVER_PORT}} -maxplayers {{MAX_PLAYERS}} -world {{WORLD_NAME}}.wld -autocreate {{WORLD_SIZE}}",
+        "environment": {
+            "MAX_PLAYERS": "8",
+            "WORLD_SIZE": "1",
+            "WORLD_NAME": "world",
+            "TSHOCK_VERSION": "latest"
+        },
+        "feature_limits": {
+            "databases": 0,
+            "backups": 2
+        }
+    }, {
+        "runtime": "tmod",
+        "allocationPort": 25565,
+        "egg": 30,
+        "docker_image": "ghcr.io/parkervcp/yolks:dotnet_6",
+        "startup": "./tModLoaderServer -ip 0.0.0.0 -port {{SERVER_PORT}} -maxplayers {{MAX_PLAYERS}} -password '{{SERVER_PASSWORD}}' -motd '{{MOTD}}' -lang {{LANGUAGE}} -world ~/saves/Worlds/{{WORLD_NAME}}.wld -worldname {{WORLD_NAME}} -autocreate {{WORLD_SIZE}} -config serverconfig.txt -savedirectory ~/ -tmlsavedirectory ~/saves -modpath ~/mods",
+        "environment": {
+            "VERSION": "latest",
+            "WORLD_NAME": "world",
+            "MAX_PLAYERS": "8",
+            "WORLD_SIZE": "1",
+            "GITHUB_USER": "",
+            "GITHUB_OAUTH_TOKEN": "",
+            "DIFFICULTY": "0",
+            "SERVER_PASSWORD": "PLEASE",
+            "MOTD": "Please don’t cut the purple trees!",
+            "LANGUAGE": "1"
+        },
+        "feature_limits": {
+            "databases": 0,
+            "backups": 2
+        }
+    }, {
+        "runtime": "purpur",
+        "allocationPort": 25565,
+        "egg": 16,
+        "docker_image": "ghcr.io/pterodactyl/yolks:java_17",
+        "startup": "java -Xms1G -Xmx3G -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:InitiatingHeapOccupancyPercent=15 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true -jar {{SERVER_JARFILE}} nogui",
+        "environment": {
+            "MINECRAFT_VERSION": "latest",
+            "SERVER_JARFILE": "server.jar",
+            "BUILD_NUMBER": "latest"
+        },
+        "feature_limits": {
+            "databases": 0,
+            "backups": 2
+        }
+    }, {
+        "runtime": "forge",
+        "allocationPort": 25565,
+        "egg": 2,
+        "docker_image": "ghcr.io/pterodactyl/yolks:java_18",
+        "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -Dterminal.jline=false -Dterminal.ansi=true $( [[  ! -f unix_args.txt ]] && printf %s '-jar {{SERVER_JARFILE}}' || printf %s '@unix_args.txt' )",
+        "environment": {
+            "SERVER_JARFILE": "server.jar",
+            "MC_VERSION": "latest",
+            "FORGE_VERSION": "",
+            "BUILD_TYPE": "recommended"
+        },
+        "feature_limits": {
+            "databases": 0,
+            "backups": 2
+        }
+    }, {
+        "runtime": "Fabric",
+        "allocationPort": 25565,
+        "egg": 46,
+        "docker_image": "ghcr.io/pterodactyl/yolks:java_17",
+        "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -Dterminal.jline=false -Dterminal.ansi=true -jar {{SERVER_JARFILE}}",
+        "environment": {
+            "SERVER_JARFILE": "fabric-server-launch.jar",
+            "MC_VERSION": "latest",
+            "FABRIC_VERSION": "latest",
+            "LOADER_VERSION": "latest"
+        },
+        "feature_limits": {
+            "databases": 0,
+            "backups": 2
+        }
+    }, {
+        "runtime": "Bungeecord",
+        "allocationPort": 25565,
+        "egg": 1,
+        "docker_image": "ghcr.io/pterodactyl/yolks:java_17",
+        "startup": "java -Xms128M -Xmx{{SERVER_MEMORY}}M -Dterminal.jline=false -Dterminal.ansi=true -jar {{SERVER_JARFILE}}",
+        "environment": {
+            "BUNGEE_VERSION": "latest",
+            "SERVER_JARFILE": "bungeecord.jar"
+        },
+        "feature_limits": {
+            "databases": 0,
+            "backups": 2
+        }
+    }]
+}
