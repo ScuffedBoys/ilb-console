@@ -62,7 +62,7 @@
               <img src="/img/flags-svg/us.svg" style="width: 50px" />
             </div>
             <div class="dp-order-step2-item-text">
-              <div class="dp-order-step2-item-text-title">Virginia</div>
+              <div class="dp-order-step2-item-text-title">Arizona</div>
               United States <br />
             </div>
           </div>
