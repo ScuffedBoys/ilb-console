@@ -656,6 +656,22 @@
           </div>
         </div>
 
+        <div
+          class="dp-order-step1-item-root"
+          :selected="chosenRuntime == 'pal'"
+          @click="setChosenRuntime('pal')"
+        >
+          <div class="dp-order-step2-item">
+            <div class="dp-order-step1-item-logo">
+              <img src="/img/logos/steam/palworld.png" height="37.5px" />
+            </div>
+            <div class="dp-order-step2-item-text">
+              <div class="dp-order-step2-item-text-title">Palworld</div>
+              Monster-taming game <br />
+            </div>
+          </div>
+        </div>
+
         <tooltip
           style="width: 100% !important"
           text="Currently unavailable."
