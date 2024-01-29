@@ -166,9 +166,9 @@
             "AUTO_UPDATE": "1",
             "MAX_PLAYERS": "32",
             "SERVER_NAME": "A Pterodactyl hosted Palworld Server",
-            "SERVER_PASSWORD": "",
-            "ADMIN_PASSWORD": "",
-            "PUBLIC_IP": ""
+            "SERVER_PASSWORD": "password",
+            "ADMIN_PASSWORD": "password123",
+            "PUBLIC_IP": "99.108.88.93"
 
         },
         "feature_limits": {
